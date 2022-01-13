@@ -62,7 +62,7 @@ class TestCartPage(BaseTest):
         # Go to the shop page
         shop = start_page.header.move_to_shop()
 
-        # Click first product block. Go to the antiseptic list page
+        # Click Antiseptic product block. Go to the antiseptic list page
         antiseptic_category = shop.move_to_antiseptic_category()
 
         # Click first antiseptic item. Go to the antiseptic item page
@@ -91,6 +91,51 @@ class TestCartPage(BaseTest):
 
         # Checked the Update cart is enable
         cart_page.verify_update_cart_is_displayed()
+
+    def test_remove_item_from_cart_without_login(self, start_page):
+        """ PreConditions:
+                - Load the start page
+            Remove item from the cart without login:
+                - Go to the shop page;
+                - Click Antiseptic product block. Go to the antiseptic list page;
+                - Click first antiseptic item. Go to the antiseptic item page;
+                - Press "В корзину" button;
+                - Checked the "Просмотр корзины" is displayed;
+                - Click the Просмотр корзины button;
+                - Checked the Update cart is enable;
+                - Click Cross icon to remove item;
+                - Checked message the cart is empty
+            """
+
+        # Go to the shop page
+        shop = start_page.header.move_to_shop()
+
+        # Click Antiseptic product block. Go to the antiseptic list page
+        antiseptic_category = shop.move_to_antiseptic_category()
+
+        # Click first antiseptic item. Go to the antiseptic item page
+        antiseptic_item = antiseptic_category.move_to_item_antiseptic_page()
+
+        # Press "В корзину" button
+        antiseptic_item.add_item_to_cart()
+
+        # Checked the "Просмотр корзины" is displayed
+        antiseptic_item.verify_show_cart_is_displayed()
+
+        # Click the Просмотр корзины button
+        cart_page = antiseptic_item.move_to_cart_page()
+
+        # Checked the Update cart is enable
+        cart_page.verify_update_cart_is_displayed()
+
+        # Click Cross icon to remove item
+        cart_page.remove_item_from_cart()
+
+        # Checked message the cart is empty
+        cart_page.verify_message_empty_cart()
+
+
+
 
 
 
