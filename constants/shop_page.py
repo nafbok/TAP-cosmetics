@@ -1,3 +1,3 @@
 class ShopPageConstants:
 
-    ANTISEPTIC_BLOCK_XPATH = ".//*[contains(text(), 'Антисептик')]"
+    ANTISEPTIC_CATEGORY_XPATH = ".//*[contains(text(), 'Антисептик')]"

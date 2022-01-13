@@ -1,13 +1,12 @@
-from time import sleep
-
 from conftest import BaseTest
-from constants.base import BaseConstants
 
 
 class TestStartPage(BaseTest):
 
-    def test_start_page(self, driver):
-        """Load start page"""
-        driver.get(BaseConstants.URL)
-        sleep(5)
+    def test_refresh_start_page(self, start_page):
+        """Click logo and refresh start page"""
+        start_page.click_logo()
+        self.log.debug("Start page was refreshed")
+
+
 

@@ -1,38 +1,54 @@
-import logging
-from asyncio import sleep
-
-from selenium.webdriver.common.by import By
-
 from conftest import BaseTest
-from constants.base import BaseConstants
 
 
 class TestCartPage(BaseTest):
 
-    def test_add_item_to_cart(self, driver):
-        """Add item to the cart:
-            - Load start page;
-            - Go to the shop page;
-            - Click first product block. Go to the product list page;
-            - Click first item. Go to the item page;
-            - Press В корзину button;
-            - Checked message the item was added to the cart;
-            - Click the Просмотр корзины button;
-            - Checked the Update cart is enable
+    def test_add_item_to_cart(self, start_page):
+        """ PreConditions:
+                - Load the start page
+            Add item to the cart:
+                - Go to the shop page;
+                - Click first product block. Go to the antiseptic list page;
+                - Click first antiseptic item. Go to the antiseptic item page;
+                - Press "В корзину" button;
+                - Checked message the item was added to the cart;
+                - Checked the "Просмотр корзины" is displayed;
+                - Click the Просмотр корзины button;
+                - Checked the Update cart is enable
             """
-        # Load start page
-        driver.get(BaseConstants.URL)
-        sleep(5)
-
         # Go to the shop page
-        shop_button = driver.find_element(by=By.XPATH, value=".//*[@id='menu-item-118']")
-        sleep(3)
-        shop_button.click()
-        sleep(5)
-        self.log.info("Shop page is opened")
+        shop = start_page.header.move_to_shop()
 
-        # Click first product block. Go to the product list page;
-        product_block = driver.find_element(by=By.XPATH, value='//*[@id="content"]/div[3]/div[1]/div/a[1]/div/img')
-        sleep(3)
-        product_block.click()
-        self.log.info("Product is opened")
+        # Click first product block. Go to the antiseptic list page
+        antiseptic_category = shop.move_to_antiseptic_category()
+
+        # Click first antiseptic item. Go to the antiseptic item page
+        antiseptic_item = antiseptic_category.move_to_item_antiseptic_page()
+
+        # Press "В корзину" button
+        antiseptic_item.add_item_to_cart()
+
+        # Checked message the item was added to the cart
+        antiseptic_item.verify_message()
+
+        # Checked the "Просмотр корзины" is displayed
+        antiseptic_item.verify_show_cart_is_displayed()
+
+        # Click the Просмотр корзины button
+        cart_page = antiseptic_item.move_to_cart_page()
+
+        # Checked the Update cart is enable
+        cart_page.verify_update_cart_is_displayed()
+
+
+
+
+
+
+
+
+
+
+
+
+

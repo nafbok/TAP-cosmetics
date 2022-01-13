@@ -5,6 +5,7 @@ import pytest
 from selenium.webdriver.chrome import webdriver
 
 from constants.base import BaseConstants
+from pages.start_page import StartPage
 
 
 def pytest_runtest_setup(item):
@@ -20,3 +21,9 @@ class BaseTest:
         driver.maximize_window()
         yield driver
         driver.close()
+
+    @pytest.fixture(scope='function')
+    def start_page(self, driver):
+        """Return Start page object"""
+        driver.get(BaseConstants.URL)
+        return StartPage(driver)
