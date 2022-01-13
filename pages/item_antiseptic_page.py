@@ -9,6 +9,8 @@ class ItemAntisepticPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self.constants = ItemAntisepticConstants()
+        from pages.header import Header
+        self.header = Header(self.driver)
 
     @log_decorator
     def add_item_to_cart(self):
@@ -19,7 +21,7 @@ class ItemAntisepticPage(BasePage):
     @log_decorator
     def verify_message(self):
         """Verify the message od the added item is displayed"""
-        message_add_to_cart = self.wait_until_element_enabled(value=self.constants.MESSEGE_ITEM_ADDED_XPATH)
+        message_add_to_cart = self.wait_until_element_enabled(value=self.constants.MESSAGE_ITEM_ADDED_XPATH)
         assert message_add_to_cart.is_displayed()
 
     @log_decorator
