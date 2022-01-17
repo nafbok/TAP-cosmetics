@@ -1,5 +1,6 @@
 """Conftest"""
 import logging
+import random
 
 import pytest
 from selenium.webdriver.chrome import webdriver
@@ -27,3 +28,10 @@ class BaseTest:
         """Return Start page object"""
         driver.get(BaseConstants.URL)
         return StartPage(driver)
+
+    def random_value(self):
+        """Choose one item from list"""
+        items_list = ['', 'Атисептик', 'Масло', 'Шампунь']
+        random.shuffle(items_list)
+        value = items_list[0]
+        return value

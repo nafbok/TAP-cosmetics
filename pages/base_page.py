@@ -34,3 +34,4 @@ class BasePage:
         """Wait until element enabled"""
         element = self.wait_until_find_element(by=by, value=value)
         return self.wait.until(EC.element_to_be_clickable(element))
+
