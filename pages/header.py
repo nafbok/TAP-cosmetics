@@ -37,9 +37,3 @@ class Header(BasePage):
         search_button = self.wait_until_find_element(value=self.constants.SEARCH_BUTTON_XPATH)
         search_button.click()
         return SearchResultPage(self.driver)
-
-    @log_decorator
-    def click_logo(self):
-        """Refresh start page"""
-        logo = self.wait_until_find_element(value=self.constants.LOGO_LINK_XPATH)
-        logo.click()

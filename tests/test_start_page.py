@@ -3,11 +3,6 @@ from conftest import BaseTest
 
 class TestStartPage(BaseTest):
 
-    def test_refresh_start_page(self, start_page):
-        """Click logo and refresh start page"""
-        start_page.header.click_logo()
-        self.log.debug("Start page was refreshed")
-
     def test_search_item_by_value(self, start_page):
         """Search item:
         - Click search icon to open search bar

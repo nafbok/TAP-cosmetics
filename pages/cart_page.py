@@ -26,7 +26,7 @@ class CartPage(BasePage):
     def verify_message_empty_cart(self):
         """Verify the message the empty cart is displayed"""
         message_empty_cart = self.wait_until_element_enabled(value=self.constants.REMOVE_ITEM_MESSAGE_XPATH)
-        assert message_empty_cart.text == "Ваша корзина пока пуста."
+        assert message_empty_cart.text == self.constants.REMOVE_TEXT_MESSAGE_XPATH
 
     @log_decorator
     def proceed_to_checkout_page(self):

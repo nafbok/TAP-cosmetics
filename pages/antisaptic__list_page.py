@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from constants.antisaptic_list_page import AntisepticListConstants
 from pages.base_page import BasePage
 from pages.item_antiseptic_page import ItemAntisepticPage

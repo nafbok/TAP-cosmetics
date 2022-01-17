@@ -4,3 +4,4 @@ class CartConstants:
     REMOVE_ICON_XPATH = ".//*[@class='fa fa-times-circle']"
     REMOVE_ITEM_MESSAGE_XPATH = '//*[@id="wrapper"]/section/div[3]/div/div/div/div/div/p[1]'
     PROCEED_TO_CHECKOUT_BUTTON_XPATH = ".//*[contains(text(), 'Proceed to Checkout')]"
+    REMOVE_TEXT_MESSAGE_XPATH = "Ваша корзина пока пуста."
